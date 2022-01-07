@@ -1,0 +1,62 @@
+---
+pagetitle: ""
+lang: "en-GB"
+output:
+  html_document:
+    highlight: textmate
+    css: ../../styles.css
+    includes:
+      in_header: ../../head_includes.html
+      before_body: ../../header.html
+      after_body: ../../footer.html
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<!-- Add a title -->
+<h1></h1>
+
+<!-- Provide a short summary -->
+<p></p>
+
+<!-- List the R packages needed and a link to their page on cran.r-project.org -->
+<div class = "row">
+<div class = "col-md-6">
+<div class="titlebar">R packages</div>
+<ul>
+  <li><a href="https://cran.r-project.org/web/packages/#/index.html" target="_blank">#</a></li>
+</ul>
+</div>
+
+<!-- Provide a link to the data source -->
+<div class = "col-md-6">
+<div class="titlebar">Data</div>
+<ul>
+  <li><a href="#" target="_blank">#</a> ()</li>
+</ul>
+</div>
+</div>
+
+<!-- Add each stage of the workflow -->
+<div class="titlebar">Workflow</div>
+
+<p></p>
+```{r}
+
+```
+
+<p></p>
+```{r}
+
+```
+
+<p></p>
+```{r}
+
+```
+
+<div class="titlebar">Notes</div>
+<p></p>
+<br /><br />

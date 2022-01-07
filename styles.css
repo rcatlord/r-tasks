@@ -1,0 +1,75 @@
+body
+{
+    font-family: 'Overpass', sans-serif;
+    color: #323132;
+    font-size: 16px;
+}
+
+main, header
+{
+    display: block;
+    box-sizing: border-box;
+}
+
+h1
+{
+    font-family: 'Permanent Marker', cursive;
+    color: #206095;
+}
+
+a
+{
+    color: #323132;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: #323132;
+    text-decoration: underline;
+}
+
+a:focus
+{
+    color: #323132;
+    text-decoration: none;
+}
+
+ul
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ol
+{
+    padding: 0;
+    margin: 0 0 0 1em;
+}
+
+div.titlebar
+{
+    font-weight: bold;
+    color: #206095;
+    background-color: #dee7ef;
+    border-radius: 5px;
+    padding: 8px 0 8px 5px;
+    margin: 10px 0;
+}
+
+div.titlebar + ul
+{
+    margin-left: 0.3em;
+}
+
+.incomplete
+{
+    color: #bdbdbd;
+}
+
+.goback
+{
+    margin-left: -0.75em;
+}
+

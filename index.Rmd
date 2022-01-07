@@ -1,0 +1,100 @@
+---
+pagetitle: Common tasks in data analysis using R
+lang: "en-GB"
+output:
+  html_document:
+    css: styles.css
+    includes:
+      in_header: head_includes.html
+      before_body: header_home.html
+      after_body: footer.html
+---
+
+<h1>Common tasks in data analysis using R</h1>
+<br />
+Use these short guides to help you complete common data analysis tasks like reading Excel files, reshaping data, filtering rows, creating bar charts and calculating summary statistics in R. All the code is provided along with step by step instructions.
+
+<div class="titlebar">Importing data</div>
+<ul>
+    <li class="incomplete">Reading CSV files</li>
+    <li><a href="workflow/import/reading-excel-files.html">Reading Excel files</a></li>
+    <li class="incomplete">Reading ODS files</li>
+    <li class="incomplete">Reading JSON files</li>
+    <li class="incomplete">Reading multiple files</li>
+    <li class="incomplete">Web scraping</li>
+    <li class="incomplete">Querying APIs e.g. Twitter, nomis</li>
+    <li class="incomplete">Exporting data</li>
+</ul>
+
+<br />
+
+<div class="titlebar">Tidying data</div>
+<ul>
+    <li class="incomplete">Inspecting data</li>
+    <li class="incomplete">Specifying data types</li>
+    <li class="incomplete">Converting strings to dates</li>
+    <li class="incomplete">Recoding factors</li>
+    <li class="incomplete">Reshaping data</li>
+    <li class="incomplete">Separating columns</li>
+    <li class="incomplete">Replacing NAs with 0</li>
+    <li class="incomplete">Filling missing values with previous values</li>
+</ul>
+
+<br />
+
+<div class="titlebar">Transforming data</div>
+<ul>
+    <li class="incomplete">Changing variable names</li>
+    <li class="incomplete">Filtering rows</li>
+    <li class="incomplete">Sorting rows</li>
+    <li class="incomplete">Creating new variables</li>
+    <li class="incomplete">Replacing values</li>
+    <li class="incomplete">Extracting days, months, years from dates</li>
+    <li class="incomplete">Regex</li>
+    <li class="incomplete">Adding row and column totals</li>
+    <li class="incomplete">Frequency tables</li>
+</ul>
+
+<br />
+
+<div class="titlebar">Visualising data</div>
+<ul>
+    <li class="incomplete">Line charts</li>
+    <li class="incomplete">Column charts</li>
+    <li class="incomplete">Bar charts</li>
+    <li class="incomplete">Scatter plots</li>
+    <li class="incomplete">Controlling axes</li>
+    <li class="incomplete">Formatting chart labels</li>
+    <li class="incomplete">Colour schemes</li>
+    <li class="incomplete">Exporting plots</li>
+</ul>
+
+<br />
+
+<div class = "titlebar">Analysing data</div>
+<ul>
+    <li class="incomplete">Summary statistics</li>
+    <li class="incomplete">Text analysis, e.g bigrams</li>
+    <li class="incomplete">Sentiment analysis</li>
+</ul>
+
+<br />
+
+<div class = "titlebar">Programming</div>
+<ul>
+    <li class="incomplete">Creating functions</li>
+    <li class="incomplete">Loops</li>
+</ul>
+
+<br />
+
+<div class = "titlebar">GIS</div>
+<ul>
+    <li class="incomplete">Reading GeoJSON files</li>
+    <li class="incomplete">Changing projection</li>
+</ul>
+
+<br /><br />
+
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /><br />
+<div><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">This work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.

@@ -1,0 +1,74 @@
+---
+pagetitle: "Reading Excel files"
+lang: "en-GB"
+output:
+  html_document:
+    highlight: textmate
+    css: ../../styles.css
+    includes:
+      in_header: ../../head_includes.html
+      before_body: ../../header.html
+      after_body: ../../footer.html
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<!-- Add a title -->
+<h1>Reading Excel files</h1>
+
+<!-- Provide a short summary -->
+<p>Load an Excel file, select a specific worksheet and skip unnecessary rows.</p>
+
+<!-- List the R packages needed and a link to their page on cran.r-project.org -->
+<div class = "row">
+<div class = "col-md-6">
+<div class="titlebar">R packages</div>
+<ul>
+  <li><a href="https://cran.r-project.org/web/packages/readxl/index.html" target="_blank">readxl</a></li>
+</ul>
+</div>
+
+<!-- Provide a link to the data source -->
+<div class = "col-md-6">
+<div class="titlebar">Data</div>
+<ul>
+  <li><a href="https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland" target="_blank">Median age of population for UK local authorities</a> (ONS)</li>
+</ul>
+</div>
+</div>
+
+<!-- Add each stage of the workflow -->
+<div class="titlebar">Workflow</div>
+
+<p>It's helpful to load your Excel file in spreadsheet software like Excel or OpenOffice to get an overview of all the worksheets it contains. There are 13 worksheets in this example spreadsheet with different subsets of mid-year population estimates and a lot of metadata. We are interested in the worksheet containing the median population age for local authorities.</p>
+
+<p>First load the readxl package.</p>
+```{r}
+library(readxl)
+```
+
+<p>Use the `read_xls()` function to load the spreadsheet then select the `sheet` called "MYE 6" and `skip` the first 7 rows.</p>
+```{r}
+df <- read_xls("../../data/ukpopestimatesmid2020on2021geography.xls",
+               sheet = "MYE 6",
+               skip = 7)
+```
+
+<p>Then use the `head()` function to inspect the first 6 rows.</p>
+```{r}
+head(df)
+```
+
+<p>We have read the Excel file locally but you may want to download it directly from a URL. To do this we use the `GET()` function from the <a href="https://cran.r-project.org/web/packages/httr/index.html" target="_blank">httr</a> package.</p>
+```{r, eval = FALSE}
+library(httr)
+url <- "https://www.ons.gov.uk/file?uri=%2fpeoplepopulationandcommunity%2fpopulationandmigration%2fpopulationestimates%2fdatasets%2fpopulationestimatesforukenglandandwalesscotlandandnorthernireland%2fmid2020/ukpopestimatesmid2020on2021geography.xls"
+GET(url, write_disk(temp <- tempfile(fileext = ".xls")))
+df <- read_xls(temp, sheet = "MYE 6", skip = 7)
+```
+
+<div class="titlebar">Notes</div>
+<p>The <a href="https://cran.r-project.org/web/packages/readxl/index.html" target="_blank">readxl</a> package has a more agnostic `read_excel()` function which can be used to read both .xls and .xlsx files.</p>
+<br /><br />
