@@ -90,8 +90,9 @@ Use these short guides to help you complete common data analysis tasks like read
 
 <div class = "titlebar">GIS</div>
 <ul>
-    <li class="incomplete">Reading GeoJSON files</li>
-    <li class="incomplete">Changing projection</li>
+    <li><a href="workflow/gis/reading-geojson-files.html">Reading GeoJSON files</a></li>
+    <li class="incomplete">Creating buffers</li>
+    <li class="incomplete">Point in polgon</li>
 </ul>
 
 <br /><br />
