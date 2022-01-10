@@ -209,20 +209,52 @@ Data
 Workflow
 </div>
 <p>
-It’s helpful to load your Excel file in spreadsheet software like Excel or OpenOffice to get an overview of all the worksheets it contains. There are 13 worksheets in this example spreadsheet with different subsets of mid-year population estimates and a lot of metadata. We are interested in the worksheet containing the median population age for local authorities.
-</p>
-<p>
 First load the readxl package.
 </p>
 <pre class="r"><code>library(readxl)</code></pre>
 <p>
-Use the <code>read_xls()</code> function to load the spreadsheet then select the <code>sheet</code> called “MYE 6” and <code>skip</code> the first 7 rows.
+Then create an object with the path to the Excel file.
 </p>
-<pre class="r"><code>df &lt;- read_xls(&quot;../../data/ukpopestimatesmid2020on2021geography.xls&quot;,
-               sheet = &quot;MYE 6&quot;,
-               skip = 7)</code></pre>
+<pre class="r"><code>path &lt;- &quot;../../data/ukpopestimatesmid2020on2021geography.xls&quot;</code></pre>
 <p>
-Then use the <code>head()</code> function to inspect the first 6 rows.
+Next we’ll list all of the worksheets in the spreadsheet using the <code>excel_sheets()</code> function.
+</p>
+<pre class="r"><code>excel_sheets(path)</code></pre>
+<pre><code>##  [1] &quot;Cover sheet&quot;          &quot;Contents&quot;             &quot;Notes&quot;               
+##  [4] &quot;Geography guide&quot;      &quot;Related publications&quot; &quot;MYE1&quot;                
+##  [7] &quot;MYE2 - Persons&quot;       &quot;MYE2 - Males&quot;         &quot;MYE2 - Females&quot;      
+## [10] &quot;MYE3&quot;                 &quot;MYE4&quot;                 &quot;MYE 5&quot;               
+## [13] &quot;MYE 6&quot;</code></pre>
+<p>
+We are interested in the worksheet called “MYE 6” which contains the median age of local authority populations in the UK. So let’s use the <code>read_excel()</code> function and specify “MYE 6” in the <code>sheet</code> argument to load the worksheet.
+</p>
+<pre class="r"><code>df &lt;- read_excel(path = path, sheet = &quot;MYE 6&quot;)</code></pre>
+<p>
+Inspecting the first few rows of the data we notice that there is a lot of metadata.
+</p>
+<pre class="r"><code>df</code></pre>
+<pre><code>## # A tibble: 427 × 23
+##    `MYE6: Median ag… ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9  ...10 ...11
+##    &lt;chr&gt;             &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 This worksheet c… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+##  2 To turn off free… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+##  3 Please choose fr… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+##  4 This met my need… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+##  5 I need something… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+##  6 This is not what… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+##  7 Code              Name  Geog… Mid-… Mid-… Mid-… Mid-… Mid-… Mid-… Mid-… Mid-…
+##  8 K02000001         UNIT… Coun… 40.3… 40.2… 40.1… 40.07 40.0… 40    39.9… 39.8…
+##  9 K03000001         GREA… Coun… 40.43 40.2… 40.1… 40.1… 40.07 40.0… 40.0… 39.9…
+## 10 K04000001         ENGL… Coun… 40.2… 40.1… 39.9… 39.9… 39.8… 39.8… 39.8… 39.7…
+## # … with 417 more rows, and 12 more variables: ...12 &lt;chr&gt;, ...13 &lt;chr&gt;,
+## #   ...14 &lt;chr&gt;, ...15 &lt;chr&gt;, ...16 &lt;chr&gt;, ...17 &lt;chr&gt;, ...18 &lt;chr&gt;,
+## #   ...19 &lt;chr&gt;, ...20 &lt;chr&gt;, ...21 &lt;chr&gt;, ...22 &lt;chr&gt;, ...23 &lt;chr&gt;</code></pre>
+<p>
+So we’ll read the worksheet again but use the <code>skip</code> argument to remove the first 7 rows.
+</p>
+<pre class="r"><code>df &lt;- read_xls(path = path, sheet = &quot;MYE 6&quot;, skip = 7)</code></pre>
+<p>
+To check that the data are tidy we can print the first few rows with the <code>head()</code> function.
 </p>
 <pre class="r"><code>head(df)</code></pre>
 <pre><code>## # A tibble: 6 × 23
@@ -238,19 +270,16 @@ Then use the <code>head()</code> function to inspect the first 6 rows.
 ## #   Mid-2012 &lt;dbl&gt;, Mid-2011 &lt;dbl&gt;, Mid-2010 &lt;dbl&gt;, Mid-2009 &lt;dbl&gt;,
 ## #   Mid-2008 &lt;dbl&gt;, Mid-2007 &lt;dbl&gt;, Mid-2006 &lt;dbl&gt;, Mid-2005 &lt;dbl&gt;,
 ## #   Mid-2004 &lt;dbl&gt;, Mid-2003 &lt;dbl&gt;, Mid-2002 &lt;dbl&gt;, Mid-2001 &lt;dbl&gt;</code></pre>
+<div class="titlebar">
+Notes
+</div>
 <p>
-We have read the Excel file locally but you may want to download it directly from a URL. To do this we use the <code>GET()</code> function from the <a href="https://cran.r-project.org/web/packages/httr/index.html" target="_blank">httr</a> package.
+We have read the Excel file locally but you may want to download it directly from a URL. To do this we can use the <code>GET()</code> function from the <a href="https://cran.r-project.org/web/packages/httr/index.html" target="_blank">httr</a> package.
 </p>
 <pre class="r"><code>library(httr)
 url &lt;- &quot;https://www.ons.gov.uk/file?uri=%2fpeoplepopulationandcommunity%2fpopulationandmigration%2fpopulationestimates%2fdatasets%2fpopulationestimatesforukenglandandwalesscotlandandnorthernireland%2fmid2020/ukpopestimatesmid2020on2021geography.xls&quot;
 GET(url, write_disk(temp &lt;- tempfile(fileext = &quot;.xls&quot;)))
 df &lt;- read_xls(temp, sheet = &quot;MYE 6&quot;, skip = 7)</code></pre>
-<div class="titlebar">
-Notes
-</div>
-<p>
-The <a href="https://cran.r-project.org/web/packages/readxl/index.html" target="_blank">readxl</a> package has a more agnostic <code>read_excel()</code> function which can be used to read both .xls and .xlsx files.
-</p>
 <p><br /><br /></p>
 
 </main>

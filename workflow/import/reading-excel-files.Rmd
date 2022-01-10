@@ -42,33 +42,47 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 <!-- Add each stage of the workflow -->
 <div class="titlebar">Workflow</div>
 
-<p>It's helpful to load your Excel file in spreadsheet software like Excel or OpenOffice to get an overview of all the worksheets it contains. There are 13 worksheets in this example spreadsheet with different subsets of mid-year population estimates and a lot of metadata. We are interested in the worksheet containing the median population age for local authorities.</p>
-
 <p>First load the readxl package.</p>
 ```{r}
 library(readxl)
 ```
 
-<p>Use the `read_xls()` function to load the spreadsheet then select the `sheet` called "MYE 6" and `skip` the first 7 rows.</p>
+<p>Then create an object with the path to the Excel file.</p>
 ```{r}
-df <- read_xls("../../data/ukpopestimatesmid2020on2021geography.xls",
-               sheet = "MYE 6",
-               skip = 7)
+path <- "../../data/ukpopestimatesmid2020on2021geography.xls"
 ```
 
-<p>Then use the `head()` function to inspect the first 6 rows.</p>
+<p>Next we'll list all of the worksheets in the spreadsheet using the `excel_sheets()` function.</p>
+```{r}
+excel_sheets(path)
+```
+
+<p>We are interested in the worksheet called "MYE 6" which contains the median age of local authority populations in the UK. So let's use the `read_excel()` function and specify "MYE 6" in the `sheet` argument to load the worksheet.</p>
+```{r}
+df <- read_excel(path = path, sheet = "MYE 6")
+```
+
+<p>Inspecting the first few rows of the data we notice that there is a lot of metadata.</p>
+```{r}
+df
+```
+
+<p>So we'll read the worksheet again but use the `skip` argument to remove the first 7 rows.</p>
+```{r}
+df <- read_xls(path = path, sheet = "MYE 6", skip = 7)
+```
+
+<p>To check that the data are tidy we can print the first few rows with the `head()` function.</p>
 ```{r}
 head(df)
 ```
 
-<p>We have read the Excel file locally but you may want to download it directly from a URL. To do this we use the `GET()` function from the <a href="https://cran.r-project.org/web/packages/httr/index.html" target="_blank">httr</a> package.</p>
+<div class="titlebar">Notes</div>
+<p>We have read the Excel file locally but you may want to download it directly from a URL. To do this we can use the `GET()` function from the <a href="https://cran.r-project.org/web/packages/httr/index.html" target="_blank">httr</a> package.</p>
 ```{r, eval = FALSE}
 library(httr)
 url <- "https://www.ons.gov.uk/file?uri=%2fpeoplepopulationandcommunity%2fpopulationandmigration%2fpopulationestimates%2fdatasets%2fpopulationestimatesforukenglandandwalesscotlandandnorthernireland%2fmid2020/ukpopestimatesmid2020on2021geography.xls"
 GET(url, write_disk(temp <- tempfile(fileext = ".xls")))
 df <- read_xls(temp, sheet = "MYE 6", skip = 7)
 ```
-
-<div class="titlebar">Notes</div>
-<p>The <a href="https://cran.r-project.org/web/packages/readxl/index.html" target="_blank">readxl</a> package has a more agnostic `read_excel()` function which can be used to read both .xls and .xlsx files.</p>
 <br /><br />
