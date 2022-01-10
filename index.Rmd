@@ -1,5 +1,5 @@
 ---
-pagetitle: Common tasks in data analysis using R
+pagetitle: Common data analysis tasks with R
 lang: "en-GB"
 output:
   html_document:
@@ -10,7 +10,7 @@ output:
       after_body: footer.html
 ---
 
-<h1>Common tasks in data analysis using R</h1>
+<h1>Common data analysis tasks with R</h1>
 <br />
 Use these short guides to help you complete common data analysis tasks like reading Excel files, reshaping data, filtering rows, creating bar charts and calculating summary statistics in R. All the code is provided along with step by step instructions.
 
