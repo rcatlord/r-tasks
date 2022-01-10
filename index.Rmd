@@ -17,7 +17,7 @@ Use these short guides to help you complete common data analysis tasks like read
 <div class="titlebar">Importing data</div>
 <ul>
     <li class="incomplete">Reading CSV files</li>
-    <li><a href="workflow/import/reading-excel-files.html">Reading Excel files</a></li>
+    <li><a style="text-decoration:none;" href="workflow/import/reading-excel-files.html">Reading Excel files</a></li>
     <li class="incomplete">Reading ODS files</li>
     <li class="incomplete">Reading JSON files</li>
     <li class="incomplete">Reading multiple files</li>
@@ -90,7 +90,7 @@ Use these short guides to help you complete common data analysis tasks like read
 
 <div class = "titlebar">GIS</div>
 <ul>
-    <li><a href="workflow/gis/reading-geojson-files.html">Reading GeoJSON files</a></li>
+    <li><a style="text-decoration:none;" href="workflow/gis/reading-geojson-files.html">Reading GeoJSON files</a></li>
     <li class="incomplete">Creating buffers</li>
     <li class="incomplete">Point in polgon</li>
 </ul>
