@@ -42,7 +42,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 <!-- Add each stage of the workflow -->
 <div class="titlebar">Workflow</div>
 
-<p>First load the readxl package.</p>
+<p>First load the <a href="https://cran.r-project.org/web/packages/readxl/index.html" target="_blank">readxl</a> package.</p>
 ```{r}
 library(readxl)
 ```
@@ -52,12 +52,12 @@ library(readxl)
 path <- "../../data/ukpopestimatesmid2020on2021geography.xls"
 ```
 
-<p>Next we'll list all of the worksheets in the spreadsheet using the `excel_sheets()` function.</p>
+<p>Next we'll list all of the worksheets in the spreadsheet using the <a href="https://readxl.tidyverse.org/reference/excel_sheets.html" target="_blank"><code>excel_sheets()</code></a> function.</p>
 ```{r}
 excel_sheets(path)
 ```
 
-<p>We are interested in the worksheet called "MYE 6" which contains the median age of local authority populations in the UK. So let's use the `read_excel()` function and specify "MYE 6" in the `sheet` argument to load the worksheet.</p>
+<p>We are interested in the worksheet called "MYE 6" which contains the median age of local authority populations in the UK. So let's use the <a href="https://readxl.tidyverse.org/reference/read_excel.html" target="_blank"><code>read_excel()</code></a> function and specify "MYE 6" in the `sheet` argument to load the worksheet.</p>
 ```{r}
 df <- read_excel(path = path, sheet = "MYE 6")
 ```
@@ -78,7 +78,7 @@ head(df)
 ```
 
 <div class="titlebar">Notes</div>
-<p>We have read the Excel file locally but you may want to download it directly from a URL. To do this we can use the `GET()` function from the <a href="https://cran.r-project.org/web/packages/httr/index.html" target="_blank">httr</a> package.</p>
+<p>We have read the Excel file locally but you may want to download it directly from a URL. To do this we can use the <a href="https://httr.r-lib.org/reference/GET.html" target="_blank"><code>GET()</code></a> function from the <a href="https://cran.r-project.org/web/packages/httr/index.html" target="_blank">httr</a> package.</p>
 ```{r, eval = FALSE}
 library(httr)
 url <- "https://www.ons.gov.uk/file?uri=%2fpeoplepopulationandcommunity%2fpopulationandmigration%2fpopulationestimates%2fdatasets%2fpopulationestimatesforukenglandandwalesscotlandandnorthernireland%2fmid2020/ukpopestimatesmid2020on2021geography.xls"

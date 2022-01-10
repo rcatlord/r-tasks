@@ -209,7 +209,7 @@ Data
 Workflow
 </div>
 <p>
-First load the readxl package.
+First load the <a href="https://cran.r-project.org/web/packages/readxl/index.html" target="_blank">readxl</a> package.
 </p>
 <pre class="r"><code>library(readxl)</code></pre>
 <p>
@@ -217,7 +217,7 @@ Then create an object with the path to the Excel file.
 </p>
 <pre class="r"><code>path &lt;- &quot;../../data/ukpopestimatesmid2020on2021geography.xls&quot;</code></pre>
 <p>
-Next we’ll list all of the worksheets in the spreadsheet using the <code>excel_sheets()</code> function.
+Next we’ll list all of the worksheets in the spreadsheet using the <a href="https://readxl.tidyverse.org/reference/excel_sheets.html" target="_blank"><code>excel_sheets()</code></a> function.
 </p>
 <pre class="r"><code>excel_sheets(path)</code></pre>
 <pre><code>##  [1] &quot;Cover sheet&quot;          &quot;Contents&quot;             &quot;Notes&quot;               
@@ -226,7 +226,7 @@ Next we’ll list all of the worksheets in the spreadsheet using the <code>excel
 ## [10] &quot;MYE3&quot;                 &quot;MYE4&quot;                 &quot;MYE 5&quot;               
 ## [13] &quot;MYE 6&quot;</code></pre>
 <p>
-We are interested in the worksheet called “MYE 6” which contains the median age of local authority populations in the UK. So let’s use the <code>read_excel()</code> function and specify “MYE 6” in the <code>sheet</code> argument to load the worksheet.
+We are interested in the worksheet called “MYE 6” which contains the median age of local authority populations in the UK. So let’s use the <a href="https://readxl.tidyverse.org/reference/read_excel.html" target="_blank"><code>read_excel()</code></a> function and specify “MYE 6” in the <code>sheet</code> argument to load the worksheet.
 </p>
 <pre class="r"><code>df &lt;- read_excel(path = path, sheet = &quot;MYE 6&quot;)</code></pre>
 <p>
@@ -274,7 +274,7 @@ To check that the data are tidy we can print the first few rows with the <code>h
 Notes
 </div>
 <p>
-We have read the Excel file locally but you may want to download it directly from a URL. To do this we can use the <code>GET()</code> function from the <a href="https://cran.r-project.org/web/packages/httr/index.html" target="_blank">httr</a> package.
+We have read the Excel file locally but you may want to download it directly from a URL. To do this we can use the <a href="https://httr.r-lib.org/reference/GET.html" target="_blank"><code>GET()</code></a> function from the <a href="https://cran.r-project.org/web/packages/httr/index.html" target="_blank">httr</a> package.
 </p>
 <pre class="r"><code>library(httr)
 url &lt;- &quot;https://www.ons.gov.uk/file?uri=%2fpeoplepopulationandcommunity%2fpopulationandmigration%2fpopulationestimates%2fdatasets%2fpopulationestimatesforukenglandandwalesscotlandandnorthernireland%2fmid2020/ukpopestimatesmid2020on2021geography.xls&quot;

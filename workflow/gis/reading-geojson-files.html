@@ -213,7 +213,7 @@ First we’ll load the <a href="https://cran.r-project.org/web/packages/sf/index
 </p>
 <pre class="r"><code>library(sf)</code></pre>
 <p>
-Then we’ll provide the URL path of the GeoJSON file to the <code>st_read()</code> function.
+Then we’ll read the GeoJSON file by passing its URL to the <a href="https://r-spatial.github.io/sf/reference/st_read.html" target="_blank"><code>st_read()</code></a> function.
 </p>
 <pre class="r"><code>sf &lt;- st_read(&quot;https://opendata.arcgis.com/datasets/bb7104d3a9c04937be57e408288282dc_0.geojson&quot;)</code></pre>
 <pre><code>## Reading layer `Countries_(December_2020)_UK_BUC&#39; from data source `https://opendata.arcgis.com/datasets/bb7104d3a9c04937be57e408288282dc_0.geojson&#39; using driver `GeoJSON&#39;
@@ -223,7 +223,7 @@ Then we’ll provide the URL path of the GeoJSON file to the <code>st_read()</co
 ## Bounding box:  xmin: -8.649996 ymin: 49.88234 xmax: 1.763571 ymax: 60.84568
 ## Geodetic CRS:  WGS 84</code></pre>
 <p>
-The GeoJSON file is read into R and information about the spatial vector boundaries is printed in the console. We can see that the data are projected in the World Geodetic System 1984 (EPSG:4326). This is what we’d expect for a <a href="https://datatracker.ietf.org/doc/html/rfc7946#page-12" target="_blank">GeoJSON file</a>. However, we want the data to be projected in British National Grid (EPSG:27700). To reproject the data we can use the <code>st_transform()</code> function and supply the <a href="https://epsg.org/home.html" target="_blank">Coordinate Reference System</a> to the <code>crs</code> argument.
+The GeoJSON file is read into R and information about the spatial vector boundaries is printed in the console. We can see that the data are projected in WGS84 (EPSG:4326). This is what we’d expect for a <a href="https://datatracker.ietf.org/doc/html/rfc7946#page-12" target="_blank">GeoJSON file</a>. However, we want the data to be projected in British National Grid (EPSG:27700). To reproject the data we can use the <a href="https://r-spatial.github.io/sf/reference/st_transform.html" target="_blank"><code>st_transform()</code></a> function and supply the <a href="https://epsg.org/home.html" target="_blank">Coordinate Reference System</a> to the <code>crs</code> argument.
 </p>
 <pre class="r"><code>sf_bng &lt;- st_transform(sf, crs = 27700)</code></pre>
 <p>
@@ -242,7 +242,7 @@ Finally, we’ll plot the data to see if it covers the area of interest.
 Notes
 </div>
 <p>
-When a coordinate reference system (CRS) is missing or wrongly set, the <code>st_set_crs()</code> function can be used.
+When a coordinate reference system (CRS) is missing or wrongly set, the <a href="https://r-spatial.github.io/sf/reference/st_crs.html" target="_blank"><code>st_set_crs()</code></a> function can be used.
 </p>
 <p><br /><br /></p>
 
